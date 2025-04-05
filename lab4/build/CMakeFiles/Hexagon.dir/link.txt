@@ -1,0 +1,2 @@
+/usr/bin/ar qc libHexagon.a CMakeFiles/Hexagon.dir/src/hexagon.cpp.o
+/usr/bin/ranlib libHexagon.a

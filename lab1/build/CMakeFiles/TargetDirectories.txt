@@ -1,0 +1,5 @@
+/home/octopussy/stud/OOP-1/lab1/build/CMakeFiles/LabLib.dir
+/home/octopussy/stud/OOP-1/lab1/build/CMakeFiles/LabTest.dir
+/home/octopussy/stud/OOP-1/lab1/build/CMakeFiles/test.dir
+/home/octopussy/stud/OOP-1/lab1/build/CMakeFiles/edit_cache.dir
+/home/octopussy/stud/OOP-1/lab1/build/CMakeFiles/rebuild_cache.dir

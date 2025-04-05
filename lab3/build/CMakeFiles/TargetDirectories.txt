@@ -1,0 +1,8 @@
+/home/octopussy/stud/OOP-1/lab3/build/CMakeFiles/Hexagon.dir
+/home/octopussy/stud/OOP-1/lab3/build/CMakeFiles/Octagon.dir
+/home/octopussy/stud/OOP-1/lab3/build/CMakeFiles/Pentagon.dir
+/home/octopussy/stud/OOP-1/lab3/build/CMakeFiles/main.dir
+/home/octopussy/stud/OOP-1/lab3/build/CMakeFiles/PolygonTest.dir
+/home/octopussy/stud/OOP-1/lab3/build/CMakeFiles/test.dir
+/home/octopussy/stud/OOP-1/lab3/build/CMakeFiles/edit_cache.dir
+/home/octopussy/stud/OOP-1/lab3/build/CMakeFiles/rebuild_cache.dir

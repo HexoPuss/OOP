@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/PolygonTest.dir/test.cpp.o -o PolygonTest  libHexagon.a libPentagon.a libOctagon.a /usr/lib/x86_64-linux-gnu/libgtest.a /usr/lib/x86_64-linux-gnu/libgtest_main.a /usr/lib/x86_64-linux-gnu/libgtest.a 

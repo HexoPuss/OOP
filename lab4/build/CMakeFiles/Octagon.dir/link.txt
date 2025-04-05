@@ -1,0 +1,2 @@
+/usr/bin/ar qc libOctagon.a CMakeFiles/Octagon.dir/src/octagon.cpp.o
+/usr/bin/ranlib libOctagon.a

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libPentagon.a CMakeFiles/Pentagon.dir/src/pentagon.cpp.o
+/usr/bin/ranlib libPentagon.a
