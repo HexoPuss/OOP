@@ -7,12 +7,12 @@
 
 class Five {
 private:
-    std::vector<unsigned char> digits; // Цифры числа (младший разряд - первый)
+    std::vector<unsigned char> digits;
     
-    void removeLeadingZeros(); // Удаление незначащих нулей
+    void removeLeadingZeros();
 
 public:
-    // Конструкторы
+
     Five();
     Five(const size_t & n, unsigned char t = 0);
     Five(const std::initializer_list<unsigned char> &t);
@@ -21,20 +21,20 @@ public:
     Five(Five &&other);
     ~Five();
     
-    // Операции присваивания
+    
     Five &operator=(const Five &other);
     Five &operator=(Five &&other);
     
-    // Арифметические операции
+    
     Five operator+(const Five &other) const;
     Five operator-(const Five &other) const;
     
-    // Операции сравнения
+    
     bool operator==(const Five &other) const;
     bool operator<(const Five &other) const;
     bool operator>(const Five &other) const;
 
-    // Ввод и вывод
+    
     friend std::ostream &operator<<(std::ostream &out, const Five &num);
     friend std::istream &operator>>(std::istream &in, Five &num);
 };

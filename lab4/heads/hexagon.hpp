@@ -1,25 +1,26 @@
 #include "figure.hpp"
 
-class Hexagon : public Figure
+
+template<coordinate T>
+class Hexagon: public Figure<T>
 {
 public:
     Hexagon();
-    Hexagon(const Hexagon &);
-    Hexagon &operator=(const Hexagon &);
-    Hexagon(Hexagon &&) noexcept;
-    Hexagon &operator=(Hexagon &&) noexcept;
-    virtual ~Hexagon() noexcept override;
-    bool operator==(const Hexagon &) const noexcept;
-    bool operator!=(const Hexagon &) const noexcept;
-    virtual Point findCenter() const noexcept override;
-    virtual operator double() const noexcept override;
+    Hexagon(const Hexagon<T>&);
+    Hexagon<T>&operator=(const Hexagon<T>&);
+    Hexagon(Hexagon<T>&&) noexcept;
+    Hexagon<T>&operator=(Hexagon<T>&&) noexcept;
+    virtual ~Hexagon() noexcept ;
+    bool operator==(const Hexagon<T>&) const noexcept;
+    bool operator!=(const Hexagon<T>&) const noexcept;
+    operator double() const noexcept ;
     
 
 protected:
-    Point left_point;
+    std::unique_ptr<Point<T>> left_point;
     double side;
-    double a, b; // a = sin(60) * side ; b = cos(60) * side
+    double a, b; // a = cos(60) * side ; b = sin(60) * side
     void abcount();
-    virtual std::istream &read(std::istream &) override;
-    virtual std::ostream &print(std::ostream &) const override;
+    virtual std::istream &read(std::istream &) ;
+    virtual std::ostream &print(std::ostream &) const ;
 };

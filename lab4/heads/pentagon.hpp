@@ -1,25 +1,28 @@
 #include "figure.hpp"
 
-class Pentagon : public Figure
+
+
+template <coordinate T>
+class Pentagon: public Figure<T>
 {
 public:
     Pentagon();
-    Pentagon(const Pentagon &);
-    Pentagon &operator=(const Pentagon &);
-    Pentagon(Pentagon &&) noexcept;
-    Pentagon &operator=(Pentagon &&) noexcept;
-    virtual ~Pentagon() noexcept override;
-    bool operator==(const Pentagon &) const noexcept;
-    bool operator!=(const Pentagon &) const noexcept;
-    virtual Point findCenter() const noexcept override;
-    virtual operator double() const noexcept override;
+    Pentagon(const Pentagon<T>&);
+    Pentagon<T>&operator=(const Pentagon<T>&);
+    Pentagon(Pentagon<T>&&) noexcept;
+    Pentagon<T>&operator=(Pentagon<T>&&) noexcept;
+    virtual ~Pentagon() noexcept ;
+    bool operator==(const Pentagon<T>&) const noexcept;
+    bool operator!=(const Pentagon<T>&) const noexcept;
+    virtual std::unique_ptr<Point<T>> findCenter() const noexcept ;
+    virtual operator double() const noexcept ;
     
 
 protected:
-    Point top_point;
+    std::unique_ptr<Point<T>> top_point;
     double side;
     double a, b, c; // a = cos(72) * side ; b = sin(36) * side; c = side * sin(72)
     void abccount();
-    virtual std::istream &read(std::istream &) override;
-    virtual std::ostream &print(std::ostream &) const override;
+    virtual std::istream &read(std::istream &) ;
+    virtual std::ostream &print(std::ostream &) const ;
 };

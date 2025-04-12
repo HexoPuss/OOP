@@ -1,8 +1,8 @@
 #include "../heads/hexagon.hpp"
 
 void Hexagon::abcount() {
-    a = side * sin(M_PI / 3);
-    b = side * cos(M_PI / 3);
+    a = side * cos(M_PI / 3);
+    b = side * sin(M_PI / 3);
 }
 
 Hexagon::Hexagon(): left_point{0, 0}, side{5} {

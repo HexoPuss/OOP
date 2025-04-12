@@ -1,72 +1,113 @@
 #include "../heads/hexagon.hpp"
+#include <memory>
 
-void Hexagon::abcount() {
-    a = side * sin(M_PI / 3);
-    b = side * cos(M_PI / 3);
+template<coordinate T>
+void Hexagon<T>::abcount() {
+    a = (T)side * sin(M_PI / 3);
+    b = (T)side * cos(M_PI / 3);
+    center = std::make_unique<Point<T>(left_point->X() + side, left_point->Y())>;
 }
-
-Hexagon::Hexagon(): left_point{0, 0}, side{5} {
+template<coordinate T>
+Hexagon<T>::Hexagon():  left_point(std::make_unique<Point<T>>(0, 0)), side{5} {
     abcount();
 }
 
-Hexagon::Hexagon(const Hexagon &other){
-    left_point = other.left_point;
+template<coordinate T>
+Hexagon<T>::Hexagon(const Hexagon<T>& other)
+{
+    // Глубокая копия
+    if (other.left_point) {
+        left_point = std::make_unique<Point<T>>(*other.left_point);
+    }
     side = other.side;
     a = other.a;
     b = other.b;
+    if (other.center) {
+        this->center = std::make_unique<Point<T>>(*other.center);
+    }
+    this->area = other.area;
 }
 
-Hexagon &Hexagon::operator=(const Hexagon &other){
-    if(&other != this){
-        left_point = other.left_point;
-        side = other.side;
-        a = other.a;
-        b = other.b;
+template<coordinate T>
+Hexagon<T>& Hexagon<T>::operator=(const Hexagon<T>& other)
+{
+    if (this == &other) {
+        return *this;
     }
+    if (other.left_point) {
+        left_point = std::make_unique<Point<T>>(*other.left_point);
+    } else {
+        left_point.reset();
+    }
+    side = other.side;
+    a = other.a;
+    b = other.b;
+    if (other.center) {
+        this->center = std::make_unique<Point<T>>(*other.center);
+    } else {
+        this->center.reset();
+    }
+    this->area = other.area;
     return *this;
 }
 
-Hexagon::Hexagon(Hexagon &&other) noexcept{
+
+template<coordinate T>
+Hexagon<T>::Hexagon(Hexagon<T> &&other) noexcept{
     left_point = std::move(other.left_point);
     side = std::move(other.side);
     a = std::move(other.a);
     b = std::move(other.b);
+    area = std::move(other.area);
 }
 
-Hexagon &Hexagon::operator=(Hexagon &&other) noexcept{
-    if(&other != this){
-        left_point = std::move(other.left_point);
-        side = std::move(other.side);
-        a = std::move(other.a);
-        b = std::move(other.b);
+
+template <coordinate T>
+Hexagon<T>& Hexagon<T>::operator=(Hexagon<T>&& other) noexcept
+{
+    if (this == &other) {
+        return *this;
     }
+    left_point = std::move(other.left_point);
+    side = std::move(other.side);
+    a = std::move(other.a);
+    b = std::move(other.b);
+    this->center = std::move(other.center);
+    this->area = other.area;
+    other.area = 0;
     return *this;
 }
 
-Hexagon::~Hexagon() noexcept {}
+template<coordinate T>
+Hexagon<T>::~Hexagon() noexcept {
+    left_point.reset()
+    center.reset()
+}
 
-bool Hexagon::operator==(const Hexagon &other) const noexcept
+
+template<coordinate T>
+bool Hexagon<T>::operator==(const Hexagon<T> &other) const noexcept
 {
     return (left_point == other.left_point) and (side == other.side);
 }
 
-bool Hexagon::operator!=(const Hexagon &other) const noexcept
+
+template<coordinate T>
+bool Hexagon<T>::operator!=(const Hexagon<T> &other) const noexcept
 {
     return (left_point != other.left_point) or (side != other.side);
 }
 
-Point Hexagon::findCenter() const noexcept{
-    Point center;
-    center.y = left_point.y;
-    center.x = left_point.x + a + (side / 2);
-    return center;
-}
 
-Hexagon::operator double() const noexcept{
+template<coordinate T>
+Hexagon<T>::operator double() const noexcept{
     return side * side * 3 / 2 * sqrt(3);
 }
 
-std::istream &Hexagon::read(std::istream &stream)
+
+
+template<coordinate T>
+std::istream &Hexagon<T>::read(std::istream &stream)
 {
     stream >> left_point.x;
     stream >> left_point.y;
@@ -75,7 +116,10 @@ std::istream &Hexagon::read(std::istream &stream)
     return stream;
 }
 
-std::ostream &Hexagon::print(std::ostream &stream) const
+
+
+template<coordinate T>
+std::ostream &Hexagon<T>::print(std::ostream &stream) const
 {
     stream << "6-угольник: ";
 
@@ -102,4 +146,3 @@ std::ostream &Hexagon::print(std::ostream &stream) const
 
     return stream;
 }
-

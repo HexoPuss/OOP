@@ -164,9 +164,9 @@ CMakeFiles/Pentagon.dir/clean:
 # Target rules for target CMakeFiles/main.dir
 
 # All Build rule for target.
-CMakeFiles/main.dir/all: CMakeFiles/Pentagon.dir/all
 CMakeFiles/main.dir/all: CMakeFiles/Hexagon.dir/all
 CMakeFiles/main.dir/all: CMakeFiles/Octagon.dir/all
+CMakeFiles/main.dir/all: CMakeFiles/Pentagon.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/octopussy/stud/OOP-1/lab3/build/CMakeFiles --progress-num=9,10 "Built target main"
@@ -192,9 +192,9 @@ CMakeFiles/main.dir/clean:
 # Target rules for target CMakeFiles/PolygonTest.dir
 
 # All Build rule for target.
-CMakeFiles/PolygonTest.dir/all: CMakeFiles/Pentagon.dir/all
 CMakeFiles/PolygonTest.dir/all: CMakeFiles/Hexagon.dir/all
 CMakeFiles/PolygonTest.dir/all: CMakeFiles/Octagon.dir/all
+CMakeFiles/PolygonTest.dir/all: CMakeFiles/Pentagon.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PolygonTest.dir/build.make CMakeFiles/PolygonTest.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PolygonTest.dir/build.make CMakeFiles/PolygonTest.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/octopussy/stud/OOP-1/lab3/build/CMakeFiles --progress-num=7,8 "Built target PolygonTest"

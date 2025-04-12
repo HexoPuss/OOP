@@ -20,8 +20,8 @@ TEST(Hexagon, copyConstructor)
     std::ostringstream oStream;
     oStream << obj2;
 
-    // Ожидаемый вывод заменён на фактический, полученный из отчёта
-    EXPECT_EQ(oStream.str(), "6-угольник: (11 ; 11)(15.3301 ; 13.5)(20.3301 ; 13.5)(24.6603 ; 11)(20.3301 ; 8.5)(15.3301 ; 8.5)");
+    
+    EXPECT_EQ(oStream.str(), "6-угольник: (11 ; 11)(13.5 ; 15.3301)(18.5 ; 15.3301)(21 ; 11)(18.5 ; 6.66987)(13.5 ; 6.66987)");
 }
 
 TEST(Hexagon, moveConstructor)
@@ -33,7 +33,7 @@ TEST(Hexagon, moveConstructor)
     std::ostringstream oStream;
     oStream << obj2;
 
-    EXPECT_EQ(oStream.str(), "6-угольник: (11 ; 11)(15.3301 ; 13.5)(20.3301 ; 13.5)(24.6603 ; 11)(20.3301 ; 8.5)(15.3301 ; 8.5)");
+    EXPECT_EQ(oStream.str(), "6-угольник: (11 ; 11)(13.5 ; 15.3301)(18.5 ; 15.3301)(21 ; 11)(18.5 ; 6.66987)(13.5 ; 6.66987)");
 }
 
 TEST(Hexagon, assignmentOperator)
@@ -49,7 +49,7 @@ TEST(Hexagon, assignmentOperator)
     std::ostringstream oStream;
     oStream << obj2;
 
-    EXPECT_EQ(oStream.str(), "6-угольник: (11 ; 11)(15.3301 ; 13.5)(20.3301 ; 13.5)(24.6603 ; 11)(20.3301 ; 8.5)(15.3301 ; 8.5)");
+    EXPECT_EQ(oStream.str(), "6-угольник: (11 ; 11)(13.5 ; 15.3301)(18.5 ; 15.3301)(21 ; 11)(18.5 ; 6.66987)(13.5 ; 6.66987)");
 }
 
 TEST(Hexagon, moveAssignment)
@@ -65,7 +65,7 @@ TEST(Hexagon, moveAssignment)
     std::ostringstream oStream;
     oStream << obj2;
 
-    EXPECT_EQ(oStream.str(), "6-угольник: (11 ; 11)(15.3301 ; 13.5)(20.3301 ; 13.5)(24.6603 ; 11)(20.3301 ; 8.5)(15.3301 ; 8.5)");
+    EXPECT_EQ(oStream.str(), "6-угольник: (11 ; 11)(13.5 ; 15.3301)(18.5 ; 15.3301)(21 ; 11)(18.5 ; 6.66987)(13.5 ; 6.66987)");
 }
 
 TEST(Hexagon, equal)
@@ -124,7 +124,7 @@ TEST(Hexagon, defaultOutput)
     std::ostringstream stream;
     stream << obj;
 
-    EXPECT_EQ(stream.str(), "6-угольник: (0 ; 0)(4.33013 ; 2.5)(9.33013 ; 2.5)(13.6603 ; 0)(9.33013 ; -2.5)(4.33013 ; -2.5)");
+    EXPECT_EQ(stream.str(), "6-угольник: (0 ; 0)(2.5 ; 4.33013)(7.5 ; 4.33013)(10 ; 0)(7.5 ; -4.33013)(2.5 ; -4.33013)");
 }
 
 TEST(Hexagon, inputAndOutput)
@@ -135,7 +135,7 @@ TEST(Hexagon, inputAndOutput)
     iStream >> obj;
     oStream << obj;
 
-    EXPECT_EQ(oStream.str(), "6-угольник: (12.56 ; -32.44)(21.2203 ; -27.44)(31.2203 ; -27.44)(39.8805 ; -32.44)(31.2203 ; -37.44)(21.2203 ; -37.44)");
+    EXPECT_EQ(oStream.str(), "6-угольник: (12.56 ; -32.44)(17.56 ; -23.7797)(27.56 ; -23.7797)(32.56 ; -32.44)(27.56 ; -41.1003)(17.56 ; -41.1003)");
 }
 
 TEST(Hexagon, area)
@@ -155,7 +155,7 @@ TEST(Hexagon, center)
     iStream >> obj;
     auto center{obj.findCenter()};
 
-    EXPECT_EQ(std::fabs(center.x - 30.4904) < EPS, true);
+    EXPECT_EQ(std::fabs(center.x - (10 + 15)) < EPS, true);
     EXPECT_EQ(std::fabs(center.y - 20) < EPS, true);
 }
 

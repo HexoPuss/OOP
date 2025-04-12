@@ -1,7 +1,7 @@
 #include "../heads/octagon.hpp"
 
 void Octagon::acount() {
-    a = side * cos(M_PI * 72 / 180);
+    a = side / sqrt(2);
 }
 
 Octagon::Octagon(): center{0, 0}, side{5} {

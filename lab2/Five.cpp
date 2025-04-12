@@ -8,15 +8,15 @@ void Five::removeLeadingZeros() {
 }
 
 Five::Five(const size_t & n, unsigned char t) {
-    // Проверяем, что цифра допустима для пятеричной системы
+    
     if (t >= 5) {
         throw std::invalid_argument("Цифра t должна быть меньше 5.");
     }
     if (n == 0) {
-        // Если n равно 0, обеспечиваем, что число хранится хотя бы одной цифрой (0)
+        
         digits.push_back(0);
     } else {
-        // Заполняем вектор n копиями значения t
+        
         digits.assign(n, t);
     }
 }
@@ -24,15 +24,13 @@ Five::Five(const size_t & n, unsigned char t) {
 
 Five::Five(const std::initializer_list<unsigned char> & t) {
     if (t.size() == 0) {
-        // При пустом списке создается число 0
+        
         digits.push_back(0);
     } else {
-        digits.reserve(t.size());
-        // Итерация в обратном направлении: последний элемент станет младшей цифрой
         for (auto it = t.end(); it != t.begin(); ) {
             --it;
             if (*it >= 5) {
-                throw std::invalid_argument("В списке инициализации обнаружена цифра, не подходящая для пятеричной системы (допустимы цифры от 0 до 4).");
+                throw std::invalid_argument("В списке инициализации обнаружена цифра, не подходящая для пятеричной системы.");
             }
             digits.push_back(*it);
         }
@@ -103,7 +101,7 @@ Five Five::operator+(const Five &other) const {
     return result;
 }
 
-// Оператор вычитания
+
 Five Five::operator-(const Five &other) const {
     
     if (*this < other) {
@@ -115,7 +113,7 @@ Five Five::operator-(const Five &other) const {
 
     unsigned char borrow = 0;
 
-    // Проход по всем разрядам
+    
     for (size_t i = 0; i < digits.size(); i++) {
         int sub = digits[i] - borrow;
         if (i < other.digits.size()) {
@@ -133,7 +131,7 @@ Five Five::operator-(const Five &other) const {
     return result;
 }
 
-// Оператор сравнения на равенство. Сравниваем, игнорируя ведущие нули.
+
 bool Five::operator==(const Five &other) const {
     // Определяем "действительную" длину числа без ведущих нулей.
     size_t len1 = digits.size();
@@ -155,9 +153,7 @@ bool Five::operator==(const Five &other) const {
     return true;
 }
 
-// Оператор "меньше".
-// Сначала сравнивается количество значащих разрядов,
-// затем поразрядное сравнение от самого старшего разряда.
+
 bool Five::operator<(const Five &other) const {
     size_t len1 = digits.size();
     while (len1 > 1 && digits[len1 - 1] == 0) {
@@ -179,7 +175,7 @@ bool Five::operator<(const Five &other) const {
     return false;
 }
 
-// Оператор "больше"
+
 bool Five::operator>(const Five &other) const {
     if(other == *this){
         return false;

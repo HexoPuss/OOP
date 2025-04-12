@@ -4,14 +4,14 @@ project(FiveProject)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# Добавляем исходники (при необходимости добавьте Five.cpp)
+
 add_library(FiveLib Five.cpp)
 
-# Находим Google Test
+
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
-# Создаём исполняемый файл для тестов
+
 add_executable(FiveTests test_Five.cpp)
 target_link_libraries(FiveTests FiveLib GTest::gtest GTest::gtest_main)
 

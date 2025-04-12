@@ -1,25 +1,27 @@
 #include "figure.hpp"
 
-class Octagon : public Figure
+
+template <coordinate T>
+class Octagon: public Figure<T>
 {
 public:
     Octagon();
-    Octagon(const Octagon &);
-    Octagon &operator=(const Octagon &);
-    Octagon(Octagon &&) noexcept;
-    Octagon &operator=(Octagon &&) noexcept;
-    virtual ~Octagon() noexcept override;
-    bool operator==(const Octagon &) const noexcept;
-    bool operator!=(const Octagon &) const noexcept;
-    virtual Point findCenter() const noexcept override;
-    virtual operator double() const noexcept override;
+    Octagon(const Octagon<T>&);
+    Octagon<T>&operator=(const Octagon<T>&);
+    Octagon(Octagon<T>&&) noexcept;
+    Octagon<T>&operator=(Octagon<T>&&) noexcept;
+    virtual ~Octagon() noexcept ;
+    bool operator==(const Octagon<T>&) const noexcept;
+    bool operator!=(const Octagon<T>&) const noexcept;
+    virtual std::unique_ptr<Point<T>> findCenter() const noexcept ;
+    virtual operator double() const noexcept ;
     
 
 protected:
-    Point center;
+    std::unique_ptr<Point<T>> center;
     double side;
-    double a; // a = sin(60) * side ; b = cos(60) * side
+    double a; // a = side * sqrt(2)
     void acount();
-    virtual std::istream &read(std::istream &) override;
-    virtual std::ostream &print(std::ostream &) const override;
+    virtual std::istream &read(std::istream &) ;
+    virtual std::ostream &print(std::ostream &) const ;
 };
