@@ -14,8 +14,8 @@ public:
     virtual ~Pentagon() noexcept ;
     bool operator==(const Pentagon<T>&) const noexcept;
     bool operator!=(const Pentagon<T>&) const noexcept;
-    virtual std::unique_ptr<Point<T>> findCenter() const noexcept ;
-    virtual operator double() const noexcept ;
+    
+    
     
 
 protected:
@@ -26,3 +26,5 @@ protected:
     virtual std::istream &read(std::istream &) ;
     virtual std::ostream &print(std::ostream &) const ;
 };
+
+#include "../src/pentagon.ipp"

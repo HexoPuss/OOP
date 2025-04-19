@@ -13,7 +13,7 @@ public:
     virtual ~Hexagon() noexcept ;
     bool operator==(const Hexagon<T>&) const noexcept;
     bool operator!=(const Hexagon<T>&) const noexcept;
-    operator double() const noexcept ;
+    
     
 
 protected:
@@ -24,3 +24,5 @@ protected:
     virtual std::istream &read(std::istream &) ;
     virtual std::ostream &print(std::ostream &) const ;
 };
+
+#include "../src/hexagon.ipp"

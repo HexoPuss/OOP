@@ -15,6 +15,10 @@
     class Point final
     {
     public:
+        T x;
+        T y;
+
+
         Point() noexcept : x{}, y{} {}
         Point(T x, T y) noexcept : x{x}, y{y} {}
         Point(const Point<T> &other) noexcept : x{other.x}, y{other.y} {}
@@ -48,8 +52,6 @@
         friend std::ostream &operator<<(std::ostream &stream, const Point<T> &object) { return object.write(stream); }
 
     private:
-        T x;
-        T y;
         std::istream &read(std::istream &stream) { return stream >> x >> y; }
         std::ostream &write(std::ostream &stream) const { return stream << "(" << x << ", " << y << ")"; }
     };

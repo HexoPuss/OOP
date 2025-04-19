@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/octopussy/stud/OOP-1/lab3/src/pentagon.cpp" "CMakeFiles/Pentagon.dir/src/pentagon.cpp.o" "gcc" "CMakeFiles/Pentagon.dir/src/pentagon.cpp.o.d"
+  "/home/octopussy/stud/OOP-1/lab4/src/pentagon.cpp" "CMakeFiles/Pentagon.dir/src/pentagon.cpp.o" "gcc" "CMakeFiles/Pentagon.dir/src/pentagon.cpp.o.d"
   )
 
 # Targets to which this target links.

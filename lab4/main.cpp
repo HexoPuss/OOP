@@ -2,8 +2,10 @@
 #include "heads/pentagon.hpp"
 #include "heads/octagon.hpp"
 
+#include <array.hpp>
+#include <string>
 
-#define MAXIMUM_FIGURES_COUNT 64
+
 
 void printHelp()
 {
@@ -19,11 +21,10 @@ void printHelp()
 
 int main()
 {
-    Figure *figures[MAXIMUM_FIGURES_COUNT];
-    size_t figuresCount{};
+    Array<std::unique_ptr<Figure<double>>> figures;
     char command;
-    Figure *newFigure;
-    Point center;
+    std::unique_ptr<Figure<double>> newFigure;
+    std::unique_ptr<Point<double>> center;
     double area;
     size_t id;
     printHelp();
@@ -35,72 +36,66 @@ int main()
         {
         case 'A':
             std::cout << "Выберите тип фигуры:" << std::endl;
-            std::cout << "1 - 5-угольник" << std::endl;
-            std::cout << "2 - 6-угольник" << std::endl;
-            std::cout << "3 - 8-угольник" << std::endl;
+            std::cout << "1 - пятиугольник" << std::endl;
+            std::cout << "2 - шестиугольник" << std::endl;
+            std::cout << "3 - восьмиугольник" << std::endl;
             std::cin >> command;
             switch (command)
             {
             case '1':
-                newFigure = new Pentagon;
-                std::cout << "Введите верхнюю ввершину 5-угольника и его сторону." << std::endl;
+                newFigure = std::make_unique<Pentagon<double>>();
+                std::cout << "Введите верхнюю вершину, и сторону." << std::endl;
                 std::cout << "Формат: X Y SIDE" << std::endl;
                 try
                 {
                     std::cin >> *newFigure;
+                    if (!std::cin.fail())
+                    {
+                        figures.pushBack(std::move(newFigure));
+                        std::cout << "Успешно добавлен пятиугольник." << std::endl;
+                    }
                 }
                 catch (std::invalid_argument &e)
                 {
                     std::cerr << e.what() << std::endl;
-                    break;
-                }
-                if (!std::cin.fail())
-                {
-                    figures[figuresCount] = newFigure;
-                    ++figuresCount;
-                    std::cout << "Добавлен 5-угольник." << std::endl;
                 }
                 break;
 
             case '2':
-                newFigure = new Hexagon;
-                std::cout << "Введите левую ввершину 5-угольника и его сторону." << std::endl;
+                newFigure = std::make_unique<Hexagon<double>>();
+                std::cout << "Введите левую вершину и сторону." << std::endl;
                 std::cout << "Формат: X Y SIDE" << std::endl;
                 try
                 {
                     std::cin >> *newFigure;
+                    if (!std::cin.fail())
+                    {
+                        figures.pushBack(std::move(newFigure));
+                        std::cout << "Успешно добавлен шестиугольник." << std::endl;
+                    }
                 }
                 catch (std::invalid_argument &e)
                 {
                     std::cerr << e.what() << std::endl;
-                    break;
-                }
-                if (!std::cin.fail())
-                {
-                    figures[figuresCount] = newFigure;
-                    ++figuresCount;
-                    std::cout << "Добавлен 6-угольник." << std::endl;
                 }
                 break;
 
             case '3':
-                newFigure = new Octagon;
-                std::cout << "Введите координаты центра и сторону." << std::endl;
+                newFigure = std::make_unique<Octagon<double>>();
+                std::cout << "Введите центр фигуры и сторону." << std::endl;
                 std::cout << "Формат: X Y SIDE" << std::endl;
                 try
                 {
                     std::cin >> *newFigure;
+                    if (!std::cin.fail())
+                    {
+                        figures.pushBack(std::move(newFigure));
+                        std::cout << "Успешно добавлена трапеция." << std::endl;
+                    }
                 }
                 catch (std::invalid_argument &e)
                 {
                     std::cerr << e.what() << std::endl;
-                    break;
-                }
-                if (!std::cin.fail())
-                {
-                    figures[figuresCount] = newFigure;
-                    ++figuresCount;
-                    std::cout << "Добавлен 8-угольник." << std::endl;
                 }
                 break;
 
@@ -111,18 +106,18 @@ int main()
             break;
 
         case 'L':
-            for (size_t i{}; i < figuresCount; ++i)
+            for (size_t i{}; i < figures.getSize(); ++i)
             {
                 center = figures[i]->findCenter();
                 std::cout << "Фигура \"" << *figures[i] << "\" с id=" << i << std::endl;
                 std::cout << "    - Площадь: " << static_cast<double>(*figures[i]) << std::endl;
-                std::cout << "    - Центр: " << center << std::endl;
+                std::cout << "    - Центр: (" << center->X() << ", " << center->Y() << ")" << std::endl;
             }
             break;
 
         case 'S':
             area = 0;
-            for (size_t i{}; i < figuresCount; ++i)
+            for (size_t i{}; i < figures.getSize(); ++i)
                 area += static_cast<double>(*figures[i]);
             std::cout << "Общая площадь: " << area << std::endl;
             break;
@@ -130,25 +125,27 @@ int main()
         case 'R':
             std::cout << "Введите id фигуры для удаления:" << std::endl;
             std::cin >> id;
-            if (id < figuresCount)
+            try
             {
-                delete figures[id];
-                for (size_t i{id + 1}; i < figuresCount; ++i)
-                    figures[i - 1] = figures[i];
-                --figuresCount;
+                figures.remove(id);
                 std::cout << "Фигура удалена" << std::endl;
             }
-            else
+            catch (const std::out_of_range &e)
             {
                 std::cerr << "Ошибка: фигура не найдена" << std::endl;
             }
             break;
 
         case 'H':
+        case 'h':
+        case '?':
             printHelp();
             break;
 
         case 'Q':
+        case 'q':
+        case 'E':
+        case 'e':
             std::cout << "Выход..." << std::endl;
             isRunning = false;
             break;
@@ -159,7 +156,6 @@ int main()
             break;
         }
     }
-    for (size_t i{}; i < figuresCount; ++i)
-        delete figures[i];
+
     return 0;
 }

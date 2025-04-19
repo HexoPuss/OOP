@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/octopussy/stud/OOP-1/lab3/src/octagon.cpp" "CMakeFiles/Octagon.dir/src/octagon.cpp.o" "gcc" "CMakeFiles/Octagon.dir/src/octagon.cpp.o.d"
+  "/home/octopussy/stud/OOP-1/lab4/src/octagon.cpp" "CMakeFiles/Octagon.dir/src/octagon.cpp.o" "gcc" "CMakeFiles/Octagon.dir/src/octagon.cpp.o.d"
   )
 
 # Targets to which this target links.

@@ -60,6 +60,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/Hexagon.dir/DependInfo.cmake"
   "CMakeFiles/Octagon.dir/DependInfo.cmake"
   "CMakeFiles/Pentagon.dir/DependInfo.cmake"
+  "CMakeFiles/Inits.dir/DependInfo.cmake"
   "CMakeFiles/main.dir/DependInfo.cmake"
-  "CMakeFiles/PolygonTest.dir/DependInfo.cmake"
   )

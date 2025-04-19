@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/octopussy/stud/OOP-1/lab3/src -I/home/octopussy/stud/OOP-1/lab3/heads
+CXX_INCLUDES = -I/home/octopussy/stud/OOP-1/lab4/src -I/home/octopussy/stud/OOP-1/lab4/heads
 
-CXX_FLAGS = -std=gnu++17
+CXX_FLAGS = -std=gnu++20
 

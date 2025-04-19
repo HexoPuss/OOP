@@ -13,15 +13,17 @@ public:
     virtual ~Octagon() noexcept ;
     bool operator==(const Octagon<T>&) const noexcept;
     bool operator!=(const Octagon<T>&) const noexcept;
-    virtual std::unique_ptr<Point<T>> findCenter() const noexcept ;
-    virtual operator double() const noexcept ;
+    
+    
     
 
 protected:
-    std::unique_ptr<Point<T>> center;
+    //center уже есть!!!
     double side;
     double a; // a = side * sqrt(2)
     void acount();
     virtual std::istream &read(std::istream &) ;
     virtual std::ostream &print(std::ostream &) const ;
 };
+
+#include "../src/octagon.ipp"

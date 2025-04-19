@@ -99,7 +99,7 @@ public:
 
     T &operator[](size_t index)
     {
-        if (index < _currentSize)
+        if (index < _currentSize && index >= 0)
             return _array.get()[index];
         else
             throw std::out_of_range("Ошибка: выход за границы массива.");

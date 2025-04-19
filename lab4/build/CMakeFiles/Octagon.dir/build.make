@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/octopussy/stud/OOP-1/lab3
+CMAKE_SOURCE_DIR = /home/octopussy/stud/OOP-1/lab4
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/octopussy/stud/OOP-1/lab3/build
+CMAKE_BINARY_DIR = /home/octopussy/stud/OOP-1/lab4/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Octagon.dir/depend.make
@@ -72,16 +72,16 @@ include CMakeFiles/Octagon.dir/flags.make
 CMakeFiles/Octagon.dir/src/octagon.cpp.o: CMakeFiles/Octagon.dir/flags.make
 CMakeFiles/Octagon.dir/src/octagon.cpp.o: ../src/octagon.cpp
 CMakeFiles/Octagon.dir/src/octagon.cpp.o: CMakeFiles/Octagon.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/octopussy/stud/OOP-1/lab3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Octagon.dir/src/octagon.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Octagon.dir/src/octagon.cpp.o -MF CMakeFiles/Octagon.dir/src/octagon.cpp.o.d -o CMakeFiles/Octagon.dir/src/octagon.cpp.o -c /home/octopussy/stud/OOP-1/lab3/src/octagon.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/octopussy/stud/OOP-1/lab4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Octagon.dir/src/octagon.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Octagon.dir/src/octagon.cpp.o -MF CMakeFiles/Octagon.dir/src/octagon.cpp.o.d -o CMakeFiles/Octagon.dir/src/octagon.cpp.o -c /home/octopussy/stud/OOP-1/lab4/src/octagon.cpp
 
 CMakeFiles/Octagon.dir/src/octagon.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Octagon.dir/src/octagon.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/octopussy/stud/OOP-1/lab3/src/octagon.cpp > CMakeFiles/Octagon.dir/src/octagon.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/octopussy/stud/OOP-1/lab4/src/octagon.cpp > CMakeFiles/Octagon.dir/src/octagon.cpp.i
 
 CMakeFiles/Octagon.dir/src/octagon.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Octagon.dir/src/octagon.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/octopussy/stud/OOP-1/lab3/src/octagon.cpp -o CMakeFiles/Octagon.dir/src/octagon.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/octopussy/stud/OOP-1/lab4/src/octagon.cpp -o CMakeFiles/Octagon.dir/src/octagon.cpp.s
 
 # Object files for target Octagon
 Octagon_OBJECTS = \
@@ -93,7 +93,7 @@ Octagon_EXTERNAL_OBJECTS =
 libOctagon.a: CMakeFiles/Octagon.dir/src/octagon.cpp.o
 libOctagon.a: CMakeFiles/Octagon.dir/build.make
 libOctagon.a: CMakeFiles/Octagon.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/octopussy/stud/OOP-1/lab3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libOctagon.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/octopussy/stud/OOP-1/lab4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libOctagon.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/Octagon.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Octagon.dir/link.txt --verbose=$(VERBOSE)
 
@@ -106,6 +106,6 @@ CMakeFiles/Octagon.dir/clean:
 .PHONY : CMakeFiles/Octagon.dir/clean
 
 CMakeFiles/Octagon.dir/depend:
-	cd /home/octopussy/stud/OOP-1/lab3/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/octopussy/stud/OOP-1/lab3 /home/octopussy/stud/OOP-1/lab3 /home/octopussy/stud/OOP-1/lab3/build /home/octopussy/stud/OOP-1/lab3/build /home/octopussy/stud/OOP-1/lab3/build/CMakeFiles/Octagon.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/octopussy/stud/OOP-1/lab4/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/octopussy/stud/OOP-1/lab4 /home/octopussy/stud/OOP-1/lab4 /home/octopussy/stud/OOP-1/lab4/build /home/octopussy/stud/OOP-1/lab4/build /home/octopussy/stud/OOP-1/lab4/build/CMakeFiles/Octagon.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Octagon.dir/depend
 

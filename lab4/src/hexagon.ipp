@@ -1,11 +1,17 @@
-#include "../heads/hexagon.hpp"
-#include <memory>
+#pragma once
+
+#include <iostream>
+#include <stdexcept>
+#include <cmath>
+#include "../heads/point.hpp"
+//#include "../heads/hexagon.hpp"
 
 template<coordinate T>
 void Hexagon<T>::abcount() {
-    a = (T)side * sin(M_PI / 3);
-    b = (T)side * cos(M_PI / 3);
-    center = std::make_unique<Point<T>(left_point->X() + side, left_point->Y())>;
+    a = side * cos(M_PI / 3);
+    b = side * sin(M_PI / 3);
+    this->center = std::make_unique<Point<T>>(left_point->X() + side, left_point->Y());
+    this->area = side * side * 3 / 2 * sqrt(3);
 }
 template<coordinate T>
 Hexagon<T>::Hexagon():  left_point(std::make_unique<Point<T>>(0, 0)), side{5} {
@@ -58,7 +64,8 @@ Hexagon<T>::Hexagon(Hexagon<T> &&other) noexcept{
     side = std::move(other.side);
     a = std::move(other.a);
     b = std::move(other.b);
-    area = std::move(other.area);
+    this->center = std::move(other.center);
+    this->area = std::move(other.area);
 }
 
 
@@ -80,8 +87,8 @@ Hexagon<T>& Hexagon<T>::operator=(Hexagon<T>&& other) noexcept
 
 template<coordinate T>
 Hexagon<T>::~Hexagon() noexcept {
-    left_point.reset()
-    center.reset()
+    left_point.reset();
+    this->center.reset();
 }
 
 
@@ -99,18 +106,12 @@ bool Hexagon<T>::operator!=(const Hexagon<T> &other) const noexcept
 }
 
 
-template<coordinate T>
-Hexagon<T>::operator double() const noexcept{
-    return side * side * 3 / 2 * sqrt(3);
-}
-
-
 
 template<coordinate T>
 std::istream &Hexagon<T>::read(std::istream &stream)
 {
-    stream >> left_point.x;
-    stream >> left_point.y;
+    
+    stream >> *left_point;
     stream >> side;
     abcount();
     return stream;
@@ -123,7 +124,7 @@ std::ostream &Hexagon<T>::print(std::ostream &stream) const
 {
     stream << "6-угольник: ";
 
-    Point cur = left_point;
+    Point<T> cur = *left_point;
     stream << cur;
 
     cur.x += a;

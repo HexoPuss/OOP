@@ -16,7 +16,7 @@ public:
 
     std::unique_ptr<Point<T>> findCenter() const noexcept{return std::make_unique<Point<T>> (*center);}
 
-    operator double() const noexcept{ return area }
+    operator double() const noexcept{ return area; }
 
 protected:
     std::unique_ptr<Point<T>> center;

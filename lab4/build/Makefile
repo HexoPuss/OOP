@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/octopussy/stud/OOP-1/lab3
+CMAKE_SOURCE_DIR = /home/octopussy/stud/OOP-1/lab4
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/octopussy/stud/OOP-1/lab3/build
+CMAKE_BINARY_DIR = /home/octopussy/stud/OOP-1/lab4/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -97,9 +97,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/octopussy/stud/OOP-1/lab3/build/CMakeFiles /home/octopussy/stud/OOP-1/lab3/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/octopussy/stud/OOP-1/lab4/build/CMakeFiles /home/octopussy/stud/OOP-1/lab4/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/octopussy/stud/OOP-1/lab3/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/octopussy/stud/OOP-1/lab4/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -166,6 +166,19 @@ Pentagon/fast:
 .PHONY : Pentagon/fast
 
 #=============================================================================
+# Target rules for targets named Inits
+
+# Build rule for target.
+Inits: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Inits
+.PHONY : Inits
+
+# fast build rule for target.
+Inits/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Inits.dir/build.make CMakeFiles/Inits.dir/build
+.PHONY : Inits/fast
+
+#=============================================================================
 # Target rules for targets named main
 
 # Build rule for target.
@@ -178,18 +191,29 @@ main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
-#=============================================================================
-# Target rules for targets named PolygonTest
+inits.o: inits.cpp.o
+.PHONY : inits.o
 
-# Build rule for target.
-PolygonTest: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PolygonTest
-.PHONY : PolygonTest
+# target to build an object file
+inits.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Inits.dir/build.make CMakeFiles/Inits.dir/inits.cpp.o
+.PHONY : inits.cpp.o
 
-# fast build rule for target.
-PolygonTest/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PolygonTest.dir/build.make CMakeFiles/PolygonTest.dir/build
-.PHONY : PolygonTest/fast
+inits.i: inits.cpp.i
+.PHONY : inits.i
+
+# target to preprocess a source file
+inits.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Inits.dir/build.make CMakeFiles/Inits.dir/inits.cpp.i
+.PHONY : inits.cpp.i
+
+inits.s: inits.cpp.s
+.PHONY : inits.s
+
+# target to generate assembly for a file
+inits.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Inits.dir/build.make CMakeFiles/Inits.dir/inits.cpp.s
+.PHONY : inits.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -287,30 +311,6 @@ src/pentagon.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pentagon.dir/build.make CMakeFiles/Pentagon.dir/src/pentagon.cpp.s
 .PHONY : src/pentagon.cpp.s
 
-test.o: test.cpp.o
-.PHONY : test.o
-
-# target to build an object file
-test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PolygonTest.dir/build.make CMakeFiles/PolygonTest.dir/test.cpp.o
-.PHONY : test.cpp.o
-
-test.i: test.cpp.i
-.PHONY : test.i
-
-# target to preprocess a source file
-test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PolygonTest.dir/build.make CMakeFiles/PolygonTest.dir/test.cpp.i
-.PHONY : test.cpp.i
-
-test.s: test.cpp.s
-.PHONY : test.s
-
-# target to generate assembly for a file
-test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PolygonTest.dir/build.make CMakeFiles/PolygonTest.dir/test.cpp.s
-.PHONY : test.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -321,10 +321,13 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... Hexagon"
+	@echo "... Inits"
 	@echo "... Octagon"
 	@echo "... Pentagon"
-	@echo "... PolygonTest"
 	@echo "... main"
+	@echo "... inits.o"
+	@echo "... inits.i"
+	@echo "... inits.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
@@ -337,9 +340,6 @@ help:
 	@echo "... src/pentagon.o"
 	@echo "... src/pentagon.i"
 	@echo "... src/pentagon.s"
-	@echo "... test.o"
-	@echo "... test.i"
-	@echo "... test.s"
 .PHONY : help
 
 
