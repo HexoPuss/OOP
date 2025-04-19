@@ -61,8 +61,8 @@ bool Pentagon::operator!=(const Pentagon &other) const noexcept
 
 Point Pentagon::findCenter() const noexcept{
     Point center;
-    center.y = top_point.y;
-    center.x = top_point.x + a + (side / 2);
+    center.y = top_point.y - (side / sin(72 * M_PI / 180) * sin(54 * M_PI / 180));
+    center.x = top_point.x;
     return center;
 }
 

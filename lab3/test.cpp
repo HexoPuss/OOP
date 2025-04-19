@@ -310,8 +310,8 @@ TEST(Pentagon, center)
     iStream >> obj;
     auto center{obj.findCenter()};
 
-    EXPECT_EQ(std::fabs(center.x - 116.18) < EPS, true);
-    EXPECT_EQ(std::fabs(center.y - 200) < EPS, true);
+    EXPECT_EQ(std::fabs(center.x - 100) < EPS, true);
+    EXPECT_EQ(std::fabs(center.y - 182.987) < EPS, true);
 }
 
 // Octagon
