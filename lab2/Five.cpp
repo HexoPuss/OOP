@@ -9,8 +9,8 @@ void Five::removeLeadingZeros() {
 
 Five::Five(const size_t & n, unsigned char t) {
     
-    if (t >= 5) {
-        throw std::invalid_argument("Цифра t должна быть меньше 5.");
+    if (t >= 5 || t < 0) {
+        throw std::invalid_argument("Цифра t должна быть меньше 5 и больше 0.");
     }
     if (n == 0) {
         
@@ -133,7 +133,7 @@ Five Five::operator-(const Five &other) const {
 
 
 bool Five::operator==(const Five &other) const {
-    // Определяем "действительную" длину числа без ведущих нулей.
+    
     size_t len1 = digits.size();
     while (len1 > 1 && digits[len1 - 1] == 0) {
         --len1;
@@ -166,7 +166,7 @@ bool Five::operator<(const Five &other) const {
     if (len1 != len2) {
         return len1 < len2;
     }
-    // Сравниваем начиная с самого старшего разряда
+    
     for (size_t i = len1; i > 0; --i) {
         if (digits[i - 1] != other.digits[i - 1]) {
             return digits[i - 1] < other.digits[i - 1];
