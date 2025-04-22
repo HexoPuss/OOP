@@ -3,8 +3,8 @@
 #include "heads/octagon.hpp"
 
 int main(){
-    Hexagon a;
-    Hexagon b;
+    Hexagon<float> a;
+    Hexagon<float> b;
     std::cin >> a;
     std::cin >> b;
 

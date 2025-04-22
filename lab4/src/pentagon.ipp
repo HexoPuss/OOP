@@ -18,7 +18,7 @@ void Pentagon<T>::abccount() {
 
 
 template<coordinate T>
-Pentagon<T>::Pentagon(): top_point(std::make_unique<Point<T>>(0, 0)), side{5} {
+Pentagon<T>::Pentagon(): top_point(std::make_unique<Point<T>>(0, 0)), side{0} {
     abccount();
 }
 
@@ -47,7 +47,7 @@ Pentagon<T> &Pentagon<T>::operator=(const Pentagon<T> &other){
     if (other.top_point) {
         top_point  = std::make_unique<Point<T>>(*other.top_point);
     } else {
-        top_point .reset();
+        top_point.reset();
     }
     side = other.side;
     a = other.a;
@@ -104,7 +104,7 @@ bool Pentagon<T>::operator==(const Pentagon<T> &other) const noexcept
 template<coordinate T>
 bool Pentagon<T>::operator!=(const Pentagon<T> &other) const noexcept
 {
-    return top_point != other.top_point || side != other.side;
+    return *top_point != *other.top_point || side != other.side;
 }
 
 

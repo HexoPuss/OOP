@@ -13,7 +13,7 @@ void Octagon<T>::acount() {
 }
 
 template<coordinate T>
-Octagon<T>::Octagon(): side{5} {
+Octagon<T>::Octagon(): side{0} {
     this->center = std::make_unique<Point<T>>(0, 0);
     acount();
 }
@@ -81,14 +81,14 @@ Octagon<T>::~Octagon() noexcept {
 template<coordinate T>
 bool Octagon<T>::operator==(const Octagon<T> &other) const noexcept
 {
-    return (this->center == other.center) && side == other.side;
+    return (*this->center == *other.center) && side == other.side;
 }
 
 
 template<coordinate T>
 bool Octagon<T>::operator!=(const Octagon<T> &other) const noexcept
 {
-    return this->center != other.center || side != other.side;
+    return *this->center != *other.center || side != other.side;
 }
 
 

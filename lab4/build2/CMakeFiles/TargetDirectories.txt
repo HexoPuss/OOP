@@ -1,3 +1,6 @@
 /home/octopussy/stud/OOP-1/lab4/build2/CMakeFiles/main.dir
+/home/octopussy/stud/OOP-1/lab4/build2/CMakeFiles/PolygonTestFloat.dir
+/home/octopussy/stud/OOP-1/lab4/build2/CMakeFiles/PolygonTestInt.dir
+/home/octopussy/stud/OOP-1/lab4/build2/CMakeFiles/test.dir
 /home/octopussy/stud/OOP-1/lab4/build2/CMakeFiles/edit_cache.dir
 /home/octopussy/stud/OOP-1/lab4/build2/CMakeFiles/rebuild_cache.dir

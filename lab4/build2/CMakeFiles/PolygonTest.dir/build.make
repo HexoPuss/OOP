@@ -69,28 +69,28 @@ include CMakeFiles/PolygonTest.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/PolygonTest.dir/flags.make
 
-CMakeFiles/PolygonTest.dir/test.cpp.o: CMakeFiles/PolygonTest.dir/flags.make
-CMakeFiles/PolygonTest.dir/test.cpp.o: ../test.cpp
-CMakeFiles/PolygonTest.dir/test.cpp.o: CMakeFiles/PolygonTest.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/octopussy/stud/OOP-1/lab4/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/PolygonTest.dir/test.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PolygonTest.dir/test.cpp.o -MF CMakeFiles/PolygonTest.dir/test.cpp.o.d -o CMakeFiles/PolygonTest.dir/test.cpp.o -c /home/octopussy/stud/OOP-1/lab4/test.cpp
+CMakeFiles/PolygonTest.dir/figures_tests.cpp.o: CMakeFiles/PolygonTest.dir/flags.make
+CMakeFiles/PolygonTest.dir/figures_tests.cpp.o: ../figures_tests.cpp
+CMakeFiles/PolygonTest.dir/figures_tests.cpp.o: CMakeFiles/PolygonTest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/octopussy/stud/OOP-1/lab4/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/PolygonTest.dir/figures_tests.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PolygonTest.dir/figures_tests.cpp.o -MF CMakeFiles/PolygonTest.dir/figures_tests.cpp.o.d -o CMakeFiles/PolygonTest.dir/figures_tests.cpp.o -c /home/octopussy/stud/OOP-1/lab4/figures_tests.cpp
 
-CMakeFiles/PolygonTest.dir/test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PolygonTest.dir/test.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/octopussy/stud/OOP-1/lab4/test.cpp > CMakeFiles/PolygonTest.dir/test.cpp.i
+CMakeFiles/PolygonTest.dir/figures_tests.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PolygonTest.dir/figures_tests.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/octopussy/stud/OOP-1/lab4/figures_tests.cpp > CMakeFiles/PolygonTest.dir/figures_tests.cpp.i
 
-CMakeFiles/PolygonTest.dir/test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PolygonTest.dir/test.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/octopussy/stud/OOP-1/lab4/test.cpp -o CMakeFiles/PolygonTest.dir/test.cpp.s
+CMakeFiles/PolygonTest.dir/figures_tests.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PolygonTest.dir/figures_tests.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/octopussy/stud/OOP-1/lab4/figures_tests.cpp -o CMakeFiles/PolygonTest.dir/figures_tests.cpp.s
 
 # Object files for target PolygonTest
 PolygonTest_OBJECTS = \
-"CMakeFiles/PolygonTest.dir/test.cpp.o"
+"CMakeFiles/PolygonTest.dir/figures_tests.cpp.o"
 
 # External object files for target PolygonTest
 PolygonTest_EXTERNAL_OBJECTS =
 
-PolygonTest: CMakeFiles/PolygonTest.dir/test.cpp.o
+PolygonTest: CMakeFiles/PolygonTest.dir/figures_tests.cpp.o
 PolygonTest: CMakeFiles/PolygonTest.dir/build.make
 PolygonTest: /usr/lib/x86_64-linux-gnu/libgtest.a
 PolygonTest: /usr/lib/x86_64-linux-gnu/libgtest_main.a

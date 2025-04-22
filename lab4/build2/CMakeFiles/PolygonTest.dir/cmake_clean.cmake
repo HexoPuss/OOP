@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/PolygonTest.dir/test.cpp.o"
-  "CMakeFiles/PolygonTest.dir/test.cpp.o.d"
+  "CMakeFiles/PolygonTest.dir/figures_tests.cpp.o"
+  "CMakeFiles/PolygonTest.dir/figures_tests.cpp.o.d"
   "PolygonTest"
   "PolygonTest.pdb"
 )

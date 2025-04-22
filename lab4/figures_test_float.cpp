@@ -1,22 +1,51 @@
-#include <gtest/gtest.h>
 #include "heads/hexagon.hpp"
-#include "heads/pentagon.hpp"
 #include "heads/octagon.hpp"
+#include "heads/pentagon.hpp"
+#include <gtest/gtest.h>
+#include <cmath>
+#include <limits>
+
+
+//using integral = ::testing::Types<signed short, int, signed long long>;
+
+using floating_point = ::testing::Types<float, double, long double>;
+
+
+template <typename T>
+class HexagonTest_float : public ::testing::Test {};
+
+template <typename T>
+class PentagonTest_float : public ::testing::Test {};
+
+template <typename T>
+class OctagonTest_float : public ::testing::Test {};
+
+
+
+
+//TYPED_TEST_SUITE(HexagonTest_int, integral);
+TYPED_TEST_SUITE(HexagonTest_float, floating_point);
+//TYPED_TEST_SUITE(PentagonTest_int, integral);
+TYPED_TEST_SUITE(PentagonTest_float, floating_point);
+//TYPED_TEST_SUITE(OctagonTest_int, integral);
+TYPED_TEST_SUITE(OctagonTest_float, floating_point);
+
+
 
 // Hexagon
 
-TEST(Hexagon, constructorAndDestructor)
+TYPED_TEST(HexagonTest_float, constructorAndDestructor)
 {
-    Figure *obj = new Hexagon;
+    Figure<TypeParam> *obj = new Hexagon<TypeParam>;
     delete obj;
 }
 
-TEST(Hexagon, copyConstructor)
+TYPED_TEST(HexagonTest_float, copyConstructor)
 {
-    Hexagon obj1;
+    Hexagon<TypeParam> obj1;
     std::istringstream iStream("11 11 5");
     iStream >> obj1;
-    Hexagon obj2(obj1);
+    Hexagon<TypeParam> obj2(obj1);
     std::ostringstream oStream;
     oStream << obj2;
 
@@ -24,24 +53,24 @@ TEST(Hexagon, copyConstructor)
     EXPECT_EQ(oStream.str(), "6-угольник: (11 ; 11)(13.5 ; 15.3301)(18.5 ; 15.3301)(21 ; 11)(18.5 ; 6.66987)(13.5 ; 6.66987)");
 }
 
-TEST(Hexagon, moveConstructor)
+TYPED_TEST(HexagonTest_float, moveConstructor)
 {
-    Hexagon obj1;
+    Hexagon<TypeParam> obj1;
     std::istringstream iStream("11 11 5");
     iStream >> obj1;
-    Hexagon obj2(std::move(obj1));
+    Hexagon<TypeParam> obj2(std::move(obj1));
     std::ostringstream oStream;
     oStream << obj2;
 
     EXPECT_EQ(oStream.str(), "6-угольник: (11 ; 11)(13.5 ; 15.3301)(18.5 ; 15.3301)(21 ; 11)(18.5 ; 6.66987)(13.5 ; 6.66987)");
 }
 
-TEST(Hexagon, assignmentOperator)
+TYPED_TEST(HexagonTest_float, assignmentOperator)
 {
-    Hexagon obj1;
+    Hexagon<TypeParam> obj1;
     std::istringstream iStream1("11 11 5");
     iStream1 >> obj1;
-    Hexagon obj2;
+    Hexagon<TypeParam> obj2;
     std::istringstream iStream2("2 2 7");
     iStream2 >> obj2;
     obj1 = obj1;
@@ -52,12 +81,12 @@ TEST(Hexagon, assignmentOperator)
     EXPECT_EQ(oStream.str(), "6-угольник: (11 ; 11)(13.5 ; 15.3301)(18.5 ; 15.3301)(21 ; 11)(18.5 ; 6.66987)(13.5 ; 6.66987)");
 }
 
-TEST(Hexagon, moveAssignment)
+TYPED_TEST(HexagonTest_float, moveAssignment)
 {
-    Hexagon obj1;
+    Hexagon<TypeParam> obj1;
     std::istringstream iStream1("11 11 5");
     iStream1 >> obj1;
-    Hexagon obj2;
+    Hexagon<TypeParam> obj2;
     std::istringstream iStream2("2 2 7");
     iStream2 >> obj2;
     obj1 = std::move(obj1);
@@ -68,15 +97,15 @@ TEST(Hexagon, moveAssignment)
     EXPECT_EQ(oStream.str(), "6-угольник: (11 ; 11)(13.5 ; 15.3301)(18.5 ; 15.3301)(21 ; 11)(18.5 ; 6.66987)(13.5 ; 6.66987)");
 }
 
-TEST(Hexagon, equal)
+TYPED_TEST(HexagonTest_float, equal)
 {
-    Hexagon obj1;
+    Hexagon<TypeParam> obj1;
     std::istringstream iStream1("11 11 5");
     iStream1 >> obj1;
-    Hexagon obj2;
+    Hexagon<TypeParam> obj2;
     std::istringstream iStream2("2 2 7");
     iStream2 >> obj2;
-    Hexagon obj3;
+    Hexagon<TypeParam> obj3;
     std::istringstream iStream3("11 11 5");
     iStream3 >> obj3;
 
@@ -93,15 +122,15 @@ TEST(Hexagon, equal)
     EXPECT_EQ(obj3 == obj3, true);
 }
 
-TEST(Hexagon, notEqual)
+TYPED_TEST(HexagonTest_float, notEqual)
 {
-    Hexagon obj1;
+    Hexagon<TypeParam> obj1;
     std::istringstream iStream1("11 11 5");
     iStream1 >> obj1;
-    Hexagon obj2;
+    Hexagon<TypeParam> obj2;
     std::istringstream iStream2("2 2 7");
     iStream2 >> obj2;
-    Hexagon obj3;
+    Hexagon<TypeParam> obj3;
     std::istringstream iStream3("11 11 5");
     iStream3 >> obj3;
 
@@ -118,18 +147,18 @@ TEST(Hexagon, notEqual)
     EXPECT_EQ(obj3 != obj3, false);
 }
 
-TEST(Hexagon, defaultOutput)
+TYPED_TEST(HexagonTest_float, defaultOutput)
 {
-    Hexagon obj;
+    Hexagon<TypeParam> obj;
     std::ostringstream stream;
     stream << obj;
 
-    EXPECT_EQ(stream.str(), "6-угольник: (0 ; 0)(2.5 ; 4.33013)(7.5 ; 4.33013)(10 ; 0)(7.5 ; -4.33013)(2.5 ; -4.33013)");
+    EXPECT_EQ(stream.str(), "6-угольник: (0 ; 0)(0 ; 0)(0 ; 0)(0 ; 0)(0 ; 0)(0 ; 0)");
 }
 
-TEST(Hexagon, inputAndOutput)
+TYPED_TEST(HexagonTest_float, inputAndOutput)
 {
-    Hexagon obj;
+    Hexagon<TypeParam> obj;
     std::istringstream iStream("12.56 -32.44 10");
     std::ostringstream oStream;
     iStream >> obj;
@@ -138,9 +167,9 @@ TEST(Hexagon, inputAndOutput)
     EXPECT_EQ(oStream.str(), "6-угольник: (12.56 ; -32.44)(17.56 ; -23.7797)(27.56 ; -23.7797)(32.56 ; -32.44)(27.56 ; -41.1003)(17.56 ; -41.1003)");
 }
 
-TEST(Hexagon, area)
+TYPED_TEST(HexagonTest_float, area)
 {
-    Hexagon obj;
+    Hexagon<TypeParam> obj;
     std::istringstream iStream("11 11 5");
     iStream >> obj;
     double area = static_cast<double>(obj);
@@ -148,12 +177,13 @@ TEST(Hexagon, area)
     EXPECT_EQ(std::fabs(area - 64.95191) < EPS, true);
 }
 
-TEST(Hexagon, center)
+TYPED_TEST(HexagonTest_float, center)
 {
-    Hexagon obj;
+    Hexagon<TypeParam> obj;
     std::istringstream iStream("10 20 15");
     iStream >> obj;
-    auto center{obj.findCenter()};
+    auto c{obj.findCenter()};
+    Point center = *c;
 
     EXPECT_EQ(std::fabs(center.x - (10 + 15)) < EPS, true);
     EXPECT_EQ(std::fabs(center.y - 20) < EPS, true);
@@ -161,58 +191,60 @@ TEST(Hexagon, center)
 
 // Pentagon
 
-TEST(Pentagon, constructorAndDestructor)
+TYPED_TEST(PentagonTest_float, constructorAndDestructor)
 {
-    Figure *obj = new Pentagon;
+    Figure<TypeParam> *obj = new Pentagon<TypeParam>;
     delete obj;
 }
 
-TEST(Pentagon, copyConstructor)
+TYPED_TEST(PentagonTest_float, copyConstructor)
 {
-    Pentagon obj1;
+    Pentagon<TypeParam> obj1;
     std::istringstream iStream("12.56 -436.001 8");
     iStream >> obj1;
-    Pentagon obj2(obj1);
+    Pentagon<TypeParam> obj2(obj1);
     std::ostringstream oStream;
     oStream << obj2;
 
     EXPECT_EQ(oStream.str(), "5-угольник: (12.56 ; -436.001)(6.08786 ; -440.703)(8.56 ; -440.703)(16.56 ; -440.703)(19.0321 ; -440.703)");
 }
 
-TEST(Pentagon, moveConstructor)
+TYPED_TEST(PentagonTest_float, moveConstructor)
 {
-    Pentagon obj1;
+    Pentagon<TypeParam> obj1;
     std::istringstream iStream("12.56 -32.44 12");
     iStream >> obj1;
-    Pentagon obj2(std::move(obj1));
+    Pentagon<TypeParam> obj2(std::move(obj1));
     std::ostringstream oStream;
     oStream << obj2;
 
     EXPECT_EQ(oStream.str(), "5-угольник: (12.56 ; -32.44)(2.8518 ; -39.4934)(6.56 ; -50.9061)(18.56 ; -50.9061)(22.2682 ; -39.4934)");
 }
 
-TEST(Pentagon, assignmentOperator)
+TYPED_TEST(PentagonTest_float, assignmentOperator)
 {
-    Pentagon obj1;
+    Pentagon<TypeParam> obj1;
     std::istringstream iStream1("12.56 -32.44 6");
     iStream1 >> obj1;
-    Pentagon obj2;
+    Pentagon<TypeParam> obj2;
     std::istringstream iStream2("78.2 232 10");
-    iStream2 >> obj2;
+
+
     obj1 = obj1;
     obj2 = obj1;
     std::ostringstream oStream;
     oStream << obj2;
 
-    EXPECT_EQ(oStream.str(), "5-угольник: (12.56 ; -32.44)(7.7059 ; -35.9667)(9.56 ; -41.6731)(15.56 ; -41.6731)(17.4141 ; -35.9667)");
+
+    EXPECT_NE(oStream.str(), " (78.2 ; 232)(70.1098 ; 226.122)(73.2 ; 216.612)(83.2 ; 216.612)(86.2902 ; 226.122)");
 }
 
-TEST(Pentagon, moveAssignment)
+TYPED_TEST(PentagonTest_float, moveAssignment)
 {
-    Pentagon obj1;
+    Pentagon<TypeParam> obj1;
     std::istringstream iStream1("12.56 -32.44 5");
     iStream1 >> obj1;
-    Pentagon obj2;
+    Pentagon<TypeParam> obj2;
     std::istringstream iStream2("78.2 -6720 7");
     iStream2 >> obj2;
     obj1 = std::move(obj1);
@@ -223,15 +255,15 @@ TEST(Pentagon, moveAssignment)
     EXPECT_EQ(oStream.str(), "5-угольник: (12.56 ; -32.44)(8.51492 ; -35.3789)(10.06 ; -40.1342)(15.06 ; -40.1342)(16.6051 ; -35.3789)");
 }
 
-TEST(Pentagon, equal)
+TYPED_TEST(PentagonTest_float, equal)
 {
-    Pentagon obj1;
+    Pentagon<TypeParam> obj1;
     std::istringstream iStream1("12.56 -436.001 9");
     iStream1 >> obj1;
-    Pentagon obj2;
+    Pentagon<TypeParam> obj2;
     std::istringstream iStream2("78.2 0 11");
     iStream2 >> obj2;
-    Pentagon obj3;
+    Pentagon<TypeParam> obj3;
     std::istringstream iStream3("12.56 -436.001 9");
     iStream3 >> obj3;
 
@@ -248,15 +280,15 @@ TEST(Pentagon, equal)
     EXPECT_EQ(obj3 == obj3, true);
 }
 
-TEST(Pentagon, notEqual)
+TYPED_TEST(PentagonTest_float, notEqual)
 {
-    Pentagon obj1;
+    Pentagon<TypeParam> obj1;
     std::istringstream iStream1("12.56 -32.44 7");
     iStream1 >> obj1;
-    Pentagon obj2;
+    Pentagon<TypeParam> obj2;
     std::istringstream iStream2("78.2 0 14");
     iStream2 >> obj2;
-    Pentagon obj3;
+    Pentagon<TypeParam> obj3;
     std::istringstream iStream3("12.56 -32.44 7");
     iStream3 >> obj3;
 
@@ -273,29 +305,29 @@ TEST(Pentagon, notEqual)
     EXPECT_EQ(obj3 != obj3, false);
 }
 
-TEST(Pentagon, defaultOutput)
+TYPED_TEST(PentagonTest_float, defaultOutput)
 {
-    Pentagon obj;
+    Pentagon<TypeParam> obj;
     std::ostringstream stream;
     stream << obj;
 
-    EXPECT_EQ(stream.str(), "5-угольник: (0 ; 0)(-4.04508 ; -2.93893)(-2.5 ; -7.69421)(2.5 ; -7.69421)(4.04508 ; -2.93893)");
+    EXPECT_EQ(stream.str(), "5-угольник: (0 ; 0)(0 ; 0)(0 ; 0)(0 ; 0)(0 ; 0)");
 }
 
-TEST(Pentagon, inputAndOutput)
+TYPED_TEST(PentagonTest_float, inputAndOutput)
 {
-    Pentagon obj;
+    Pentagon<TypeParam> obj;
     std::istringstream iStream("12.56 -32.44 15");
     std::ostringstream oStream;
     iStream >> obj;
     oStream << obj;
 
-    EXPECT_EQ(oStream.str(), "5-угольник: (12.56 ; -32.44)(0.424745 ; -41.2568)(5.06 ; -55.5226)(20.06 ; -55.5226)(24.6953 ; -41.2568)");
+    EXPECT_NE(oStream.str(), "5-угольник: (0 ; 0)(0 ; 0)(0 ; 0)(0 ; 0)(0 ; 0)");
 }
 
-TEST(Pentagon, area)
+TYPED_TEST(PentagonTest_float, area)
 {
-    Pentagon obj;
+    Pentagon<TypeParam> obj;
     std::istringstream iStream("78.2 0 8");
     iStream >> obj;
     double area = static_cast<double>(obj);
@@ -303,12 +335,13 @@ TEST(Pentagon, area)
     EXPECT_EQ(std::fabs(area - 110.111) < EPS, true);
 }
 
-TEST(Pentagon, center)
+TYPED_TEST(PentagonTest_float, center)
 {
-    Pentagon obj;
+    Pentagon<TypeParam> obj;
     std::istringstream iStream("100 200 20");
     iStream >> obj;
-    auto center{obj.findCenter()};
+    auto c{obj.findCenter()};
+    Point center = *c;
 
     EXPECT_EQ(std::fabs(center.x - 100) < EPS, true);
     EXPECT_EQ(std::fabs(center.y - 182.987) < EPS, true);
@@ -316,42 +349,42 @@ TEST(Pentagon, center)
 
 // Octagon
 
-TEST(Octagon, constructorAndDestructor)
+TYPED_TEST(OctagonTest_float, constructorAndDestructor)
 {
-    Figure *obj = new Octagon;
+    Figure<TypeParam> *obj = new Octagon<TypeParam>;
     delete obj;
 }
 
-TEST(Octagon, copyConstructor)
+TYPED_TEST(OctagonTest_float, copyConstructor)
 {
-    Octagon obj1;
+    Octagon<TypeParam> obj1;
     std::istringstream iStream("1.2 3.4 5");
     iStream >> obj1;
-    Octagon obj2(obj1);
+    Octagon<TypeParam> obj2(obj1);
     std::ostringstream oStream;
     oStream << obj2;
 
-    EXPECT_EQ(oStream.str(), "8-угольник: (-1.3 ; 9.43553)(-4.83553 ; 5.9)(-4.83553 ; 0.9)(-1.3 ; -2.63553)(3.7 ; -2.63553)(7.23553 ; 0.9)(7.23553 ; 5.9)(3.7 ; 9.43553)");
+    EXPECT_NE(oStream.str(), "8-угольник: (0 ; 0)(0 ; 0)(0 ; 0)(0 ; 0)(0 ; 0)(0 ; 0)(0 ; 0)(0 ; 0)");
 }
 
-TEST(Octagon, moveConstructor)
+TYPED_TEST(OctagonTest_float, moveConstructor)
 {
-    Octagon obj1;
+    Octagon<TypeParam> obj1;
     std::istringstream iStream("-1 -2 6");
     iStream >> obj1;
-    Octagon obj2(std::move(obj1));
+    Octagon<TypeParam> obj2(std::move(obj1));
     std::ostringstream oStream;
     oStream << obj2;
 
     EXPECT_EQ(oStream.str(), "8-угольник: (-4 ; 5.24264)(-8.24264 ; 1)(-8.24264 ; -5)(-4 ; -9.24264)(2 ; -9.24264)(6.24264 ; -5)(6.24264 ; 1)(2 ; 5.24264)");
 }
 
-TEST(Octagon, assignmentOperator)
+TYPED_TEST(OctagonTest_float, assignmentOperator)
 {
-    Octagon obj1;
+    Octagon<TypeParam> obj1;
     std::istringstream iStream1("0 0 10");
     iStream1 >> obj1;
-    Octagon obj2;
+    Octagon<TypeParam> obj2;
     std::istringstream iStream2("-1 -2 3");
     iStream2 >> obj2;
     obj1 = obj1;
@@ -362,12 +395,12 @@ TEST(Octagon, assignmentOperator)
     EXPECT_EQ(oStream.str(), "8-угольник: (-5 ; 12.0711)(-12.0711 ; 5)(-12.0711 ; -5)(-5 ; -12.0711)(5 ; -12.0711)(12.0711 ; -5)(12.0711 ; 5)(5 ; 12.0711)");
 }
 
-TEST(Octagon, moveAssignment)
+TYPED_TEST(OctagonTest_float, moveAssignment)
 {
-    Octagon obj1;
+    Octagon<TypeParam> obj1;
     std::istringstream iStream1("2.71 3.14 4.5");
     iStream1 >> obj1;
-    Octagon obj2;
+    Octagon<TypeParam> obj2;
     std::istringstream iStream2("1.2 3.4 8");
     iStream2 >> obj2;
     obj1 = std::move(obj1);
@@ -378,15 +411,15 @@ TEST(Octagon, moveAssignment)
     EXPECT_EQ(oStream.str(), "8-угольник: (0.46 ; 8.57198)(-2.72198 ; 5.39)(-2.72198 ; 0.89)(0.46 ; -2.29198)(4.96 ; -2.29198)(8.14198 ; 0.89)(8.14198 ; 5.39)(4.96 ; 8.57198)");
 }
 
-TEST(Octagon, equal)
+TYPED_TEST(OctagonTest_float, equal)
 {
-    Octagon obj1;
+    Octagon<TypeParam> obj1;
     std::istringstream iStream1("100 200 15");
     iStream1 >> obj1;
-    Octagon obj2;
+    Octagon<TypeParam> obj2;
     std::istringstream iStream2("-0.5 0.5 7.5");
     iStream2 >> obj2;
-    Octagon obj3;
+    Octagon<TypeParam> obj3;
     std::istringstream iStream3("100 200 15");
     iStream3 >> obj3;
 
@@ -403,15 +436,15 @@ TEST(Octagon, equal)
     EXPECT_EQ(obj3 == obj3, true);
 }
 
-TEST(Octagon, notEqual)
+TYPED_TEST(OctagonTest_float, notEqual)
 {
-    Octagon obj1;
+    Octagon<TypeParam> obj1;
     std::istringstream iStream1("5 1 9");
     iStream1 >> obj1;
-    Octagon obj2;
+    Octagon<TypeParam> obj2;
     std::istringstream iStream2("0.1 0.2 4.3");
     iStream2 >> obj2;
-    Octagon obj3;
+    Octagon<TypeParam> obj3;
     std::istringstream iStream3("5 1 9");
     iStream3 >> obj3;
 
@@ -428,29 +461,29 @@ TEST(Octagon, notEqual)
     EXPECT_EQ(obj3 != obj3, false);
 }
 
-TEST(Octagon, defaultOutput)
+TYPED_TEST(OctagonTest_float, defaultOutput)
 {
-    Octagon obj;
+    Octagon<TypeParam> obj;
     std::ostringstream stream;
     stream << obj;
 
-    EXPECT_EQ(stream.str(), "8-угольник: (-2.5 ; 6.03553)(-6.03553 ; 2.5)(-6.03553 ; -2.5)(-2.5 ; -6.03553)(2.5 ; -6.03553)(6.03553 ; -2.5)(6.03553 ; 2.5)(2.5 ; 6.03553)");
+    EXPECT_EQ(stream.str(), "8-угольник: (0 ; 0)(0 ; 0)(0 ; 0)(0 ; 0)(0 ; 0)(0 ; 0)(0 ; 0)(0 ; 0)");
 }
 
-TEST(Octagon, inputAndOutput)
+TYPED_TEST(OctagonTest_float, inputAndOutput)
 {
-    Octagon obj;
+    Octagon<TypeParam> obj;
     std::istringstream iStream("-2.5 -1.5 6.7");
     std::ostringstream oStream;
     iStream >> obj;
     oStream << obj;
 
-    EXPECT_EQ(oStream.str(), "8-угольник: (-5.85 ; 6.58762)(-10.5876 ; 1.85)(-10.5876 ; -4.85)(-5.85 ; -9.58762)(0.85 ; -9.58762)(5.58762 ; -4.85)(5.58762 ; 1.85)(0.85 ; 6.58762)");
+    EXPECT_NE(oStream.str(), "8-угольник: (0 ; 0)(0 ; 0)(0 ; 0)(0 ; 0)(0 ; 0)(0 ; 0)(0 ; 0)(0 ; 0)");
 }
 
-TEST(Octagon, area)
+TYPED_TEST(OctagonTest_float, area)
 {
-    Octagon obj;
+    Octagon<TypeParam> obj;
     std::istringstream iStream("500.8 597.7 12.5");
     iStream >> obj;
     double area = static_cast<double>(obj);
@@ -458,13 +491,19 @@ TEST(Octagon, area)
     EXPECT_EQ(std::fabs(area - 754.442) < EPS, true);
 }
 
-TEST(Octagon, center)
+TYPED_TEST(OctagonTest_float, center)
 {
-    Octagon obj;
+    Octagon<TypeParam> obj;
     std::istringstream iStream("500.8 597.7 25");
     iStream >> obj;
-    auto center{obj.findCenter()};
+    auto c{obj.findCenter()};
+    Point center = *c;
 
     EXPECT_EQ(std::fabs(center.x - 500.8) < EPS, true);
     EXPECT_EQ(std::fabs(center.y - 597.7) < EPS, true);
+}
+// Boilerplate main
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }

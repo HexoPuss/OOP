@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/octopussy/stud/OOP-1/lab4/figures_tests.cpp" "CMakeFiles/PolygonTest.dir/figures_tests.cpp.o" "gcc" "CMakeFiles/PolygonTest.dir/figures_tests.cpp.o.d"
+  "/home/octopussy/stud/OOP-1/lab4/figures_test_float.cpp" "CMakeFiles/PolygonTestFloat.dir/figures_test_float.cpp.o" "gcc" "CMakeFiles/PolygonTestFloat.dir/figures_test_float.cpp.o.d"
   )
 
 # Targets to which this target links.

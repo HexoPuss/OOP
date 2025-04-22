@@ -65,6 +65,16 @@ CMAKE_BINARY_DIR = /home/octopussy/stud/OOP-1/lab4/build2
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -129,6 +139,80 @@ main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
+#=============================================================================
+# Target rules for targets named PolygonTestFloat
+
+# Build rule for target.
+PolygonTestFloat: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PolygonTestFloat
+.PHONY : PolygonTestFloat
+
+# fast build rule for target.
+PolygonTestFloat/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PolygonTestFloat.dir/build.make CMakeFiles/PolygonTestFloat.dir/build
+.PHONY : PolygonTestFloat/fast
+
+#=============================================================================
+# Target rules for targets named PolygonTestInt
+
+# Build rule for target.
+PolygonTestInt: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PolygonTestInt
+.PHONY : PolygonTestInt
+
+# fast build rule for target.
+PolygonTestInt/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PolygonTestInt.dir/build.make CMakeFiles/PolygonTestInt.dir/build
+.PHONY : PolygonTestInt/fast
+
+figures_test_float.o: figures_test_float.cpp.o
+.PHONY : figures_test_float.o
+
+# target to build an object file
+figures_test_float.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PolygonTestFloat.dir/build.make CMakeFiles/PolygonTestFloat.dir/figures_test_float.cpp.o
+.PHONY : figures_test_float.cpp.o
+
+figures_test_float.i: figures_test_float.cpp.i
+.PHONY : figures_test_float.i
+
+# target to preprocess a source file
+figures_test_float.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PolygonTestFloat.dir/build.make CMakeFiles/PolygonTestFloat.dir/figures_test_float.cpp.i
+.PHONY : figures_test_float.cpp.i
+
+figures_test_float.s: figures_test_float.cpp.s
+.PHONY : figures_test_float.s
+
+# target to generate assembly for a file
+figures_test_float.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PolygonTestFloat.dir/build.make CMakeFiles/PolygonTestFloat.dir/figures_test_float.cpp.s
+.PHONY : figures_test_float.cpp.s
+
+figures_test_int.o: figures_test_int.cpp.o
+.PHONY : figures_test_int.o
+
+# target to build an object file
+figures_test_int.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PolygonTestInt.dir/build.make CMakeFiles/PolygonTestInt.dir/figures_test_int.cpp.o
+.PHONY : figures_test_int.cpp.o
+
+figures_test_int.i: figures_test_int.cpp.i
+.PHONY : figures_test_int.i
+
+# target to preprocess a source file
+figures_test_int.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PolygonTestInt.dir/build.make CMakeFiles/PolygonTestInt.dir/figures_test_int.cpp.i
+.PHONY : figures_test_int.cpp.i
+
+figures_test_int.s: figures_test_int.cpp.s
+.PHONY : figures_test_int.s
+
+# target to generate assembly for a file
+figures_test_int.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PolygonTestInt.dir/build.make CMakeFiles/PolygonTestInt.dir/figures_test_int.cpp.s
+.PHONY : figures_test_int.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -161,7 +245,16 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... test"
+	@echo "... PolygonTestFloat"
+	@echo "... PolygonTestInt"
 	@echo "... main"
+	@echo "... figures_test_float.o"
+	@echo "... figures_test_float.i"
+	@echo "... figures_test_float.s"
+	@echo "... figures_test_int.o"
+	@echo "... figures_test_int.i"
+	@echo "... figures_test_int.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

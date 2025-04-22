@@ -14,8 +14,6 @@ public:
     bool operator==(const Hexagon<T>&) const noexcept;
     bool operator!=(const Hexagon<T>&) const noexcept;
     
-    
-
 protected:
     std::unique_ptr<Point<T>> left_point;
     double side;

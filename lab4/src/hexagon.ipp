@@ -14,7 +14,7 @@ void Hexagon<T>::abcount() {
     this->area = side * side * 3 / 2 * sqrt(3);
 }
 template<coordinate T>
-Hexagon<T>::Hexagon():  left_point(std::make_unique<Point<T>>(0, 0)), side{5} {
+Hexagon<T>::Hexagon():  left_point(std::make_unique<Point<T>>(0, 0)), side{0} {
     abcount();
 }
 
@@ -95,14 +95,14 @@ Hexagon<T>::~Hexagon() noexcept {
 template<coordinate T>
 bool Hexagon<T>::operator==(const Hexagon<T> &other) const noexcept
 {
-    return (left_point == other.left_point) and (side == other.side);
+    return (*left_point == *other.left_point) and (side == other.side);
 }
 
 
 template<coordinate T>
 bool Hexagon<T>::operator!=(const Hexagon<T> &other) const noexcept
 {
-    return (left_point != other.left_point) or (side != other.side);
+    return (*left_point != *other.left_point) or (side != other.side);
 }
 
 

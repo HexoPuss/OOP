@@ -52,8 +52,12 @@
         friend std::ostream &operator<<(std::ostream &stream, const Point<T> &object) { return object.write(stream); }
 
     private:
-        std::istream &read(std::istream &stream) { return stream >> x >> y; }
-        std::ostream &write(std::ostream &stream) const { return stream << "(" << x << ", " << y << ")"; }
+        std::istream &read(std::istream &stream) { 
+            stream >> x;
+            stream >> y;            
+            return stream;
+        }
+        std::ostream &write(std::ostream &stream) const { return stream << "(" << x << " ; " << y << ")"; }
     };
 
 

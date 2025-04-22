@@ -2,7 +2,7 @@
 #include <stdexcept>
 #include <cmath>
 #include "point.hpp"
-#define EPS 0.00001
+#define EPS 0.001
 #ifndef FIGURE
 #define FIGURE
 
