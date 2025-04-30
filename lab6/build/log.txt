@@ -1,0 +1,10 @@
+Event: Медведь Bear1 атакует Elf Elf1!
+
+Event: Медведь Bear1 убивает эльфа Elf1!
+
+Event: Медведь AA атакует Elf 4!
+
+Event: Медведь AA убивает эльфа 4!
+
+Event: Battle completed.
+Event: Игра сохранена.
